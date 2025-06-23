@@ -1,4 +1,4 @@
-import * as UPNG from "https://esm.sh/upng-js@2.1.0";
+import { upng_encode } from "https://esm.sh/upng-js@2.1.0";
 
 Deno.serve((req) => {
   const w = 256;
@@ -12,6 +12,6 @@ Deno.serve((req) => {
       d[i + 2] = 0;
       d[i + 3] = 255;
     }
-  const png = UPNG.encode([d.buffer],w,h,0);
+  const png = upng_encode([d.buffer],w,h,0);
   return new Response(png, { headers: { "Content-Type": "image/png" } });
 });
